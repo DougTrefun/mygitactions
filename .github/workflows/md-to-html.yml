@@ -4,7 +4,7 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-      - uses: lifepal/markdown-to-html@v1.2
+    uses: lifepal/markdown-to-html@v1.2
       - name: Upload Documentation to Wiki
         uses: SwiftDocOrg/github-wiki-publish-action@v1
         with:
