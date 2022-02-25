@@ -1,11 +1,14 @@
 name: Markdown to HTML
-  uses: lifepal/markdown-to-html@v1.2
-  upload_file:
-    name: Upload File
+on: [push]
+  
+jobs:
+  build:
     runs-on: ubuntu-latest
-    steps:
-      - run: echo "Hello World" > file.txt
-      - uses: actions/upload-artifact@v1
+      - uses: lifepal/markdown-to-html@v1.2
+      - name: Upload Documentation to Wiki
+        uses: SwiftDocOrg/github-wiki-publish-action@v1
         with:
-          name: file
-          path: file.txt
+          path: "Documentation"
+        env:
+          GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+      
