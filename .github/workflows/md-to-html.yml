@@ -1,2 +1,11 @@
 name: Markdown to HTML
   uses: lifepal/markdown-to-html@v1.2
+  upload_file:
+    name: Upload File
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello World" > file.txt
+      - uses: actions/upload-artifact@v1
+        with:
+          name: file
+          path: file.txt
